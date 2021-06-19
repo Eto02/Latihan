@@ -1,9 +1,16 @@
 import React,{Component} from 'react';
+import BlogPost from '../BlogPost/BlogPost';
 // import YouTubeComp from '../../components/YouTubeComp/YouTubeComp';
-import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
+// import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
 // import Product from '../Product/Product';
 
 class Home extends Component{
+    state={
+        showComponent:true
+    }
+    componentDidMount(){
+
+    }
     render(){
         return(
             <div>
@@ -29,9 +36,17 @@ class Home extends Component{
             {/* <p>Counter</p>
             <hr/>
             <Product/> */}
-            <p>LifeCycle Component</p>
+            {/* <p>LifeCycle Component</p>
             <hr/>
-            <LifeCycleComp/>
+            {
+                this,this.state.showComponent?
+             <LifeCycleComp/>
+             :null
+            }
+          */}
+          <p>Blog Post</p>
+          <hr/>
+          <BlogPost/>
             </div>
   
             
