@@ -1,5 +1,5 @@
 import React, {Component,Fragment} from 'react';
-import CardProduct from '../CardProduct/CardProduct';
+import CardProduct from './CardProduct/CardProduct';
 import './Product.css';
 class Product extends Component{
     state = {
@@ -15,6 +15,8 @@ class Product extends Component{
     render(){
         return(
             <Fragment>
+            <p>Product</p>
+            <hr/>
             <div className="header">
                 <div className="logo">
                     <img src="" alt=""/>
