@@ -104,6 +104,10 @@ class BlogPost extends Component{
         this.resetState();
         
     }
+    handleDetail=(e)=>{
+        // console.log(e)
+        this.props.history.push(`/detail-post/${e}`)
+    }
     componentDidMount(){
         // fetch('https://jsonplaceholder.typicode.com/posts')
         // .then(response => response.json())
@@ -139,6 +143,7 @@ class BlogPost extends Component{
                         data={post}
                         remove={this.handleRemove}
                         update={this.handleUpdate}
+                        goDetail={this.handleDetail}
                         />
                     })
                 }
