@@ -587,6 +587,12 @@
       "id": 1624255205355,
       "title": "Title 1",
       "body": "Body"
+    },
+    {
+      "userId": 1,
+      "id": 1624506207112,
+      "title": "Title 3 Update",
+      "body": "Body 3 Update"
     }
   ],
   "comments": [],

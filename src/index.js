@@ -6,17 +6,17 @@ import './index.css';
 // import StateFullComponent from './container/StateFullComponent';
 // import YouTubeComp from './components/YouTubeComp/YouTubeComp';
 import Home from './container/Home/Home';
-import { createStore } from 'redux';
-import {Provider} from 'react-redux';
-import rootReducer from './redux/reducer/globalReducer'
+// import { createStore } from 'redux';
+// import {Provider} from 'react-redux';
+// import rootReducer from './redux/reducer/globalReducer'
 
 
 //Store
-const store= createStore(rootReducer);
+// const store= createStore(rootReducer);
 
-const newComp=<Provider store={store}><Home /></Provider>
+// const newComp=<Provider store={store}><Home /></Provider>
 
-ReactDOM.render(newComp,document.getElementById('root'));
+ReactDOM.render(<Home />,document.getElementById('root'));
 
 
 

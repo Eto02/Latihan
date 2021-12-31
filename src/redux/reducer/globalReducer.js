@@ -1,4 +1,4 @@
-import ActionType from './globalActionType';
+import ActionType from '../globalActionType';
 
 const globalState={
     totalOrder:5

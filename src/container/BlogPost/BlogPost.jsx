@@ -3,10 +3,12 @@ import React,{Component,Fragment} from 'react';
 import Post from './Post/Post';
 import './BlogPost.css'
 import axios from 'axios';
+import API from '../../services';
 
 class BlogPost extends Component{
     state={
         post:[],
+        comment:[],
         formBlogPost:{
             userId: 1,
             id:'',
@@ -26,28 +28,40 @@ class BlogPost extends Component{
         })
     }
     getPostApi =()=>{
-        axios.get('http://localhost:3001/posts?_sort=id&_order=desc')
-        .then((res)=>{
-            // console.log(res.data)
+       let data={
+            _sort:'id',
+            _order:'desc',
+        };
+        API.getNewsBlog(data)
+        .then(res=>{
             this.setState({
-              post:res.data
+                post:res
             })
         })
+        API.getCommentBlog()
+        .then(res=>{
+            this.setState({
+                comment:res
+            })
+        })
+      
     }
     postDataApi=()=>{
-        axios.post(`http://localhost:3001/posts`,this.state.formBlogPost)
+    
+        API.postDataPost(this.state.formBlogPost)
         .then((res)=>{
-            console.log(res)
             this.getPostApi();
-            this.resetState()
+            this.resetState();
+            console.log('succes',res)
         },(err)=>{
+            this.resetState();
             console.log(err)
-            this.resetState()
         })
     }
+      
     handleRemove=(data)=>{
-        // console.log(data)
-        axios.delete(`http://localhost:3001/posts/${data}`)
+        console.log(data)
+        API.deleteDataPost(data)
         .then((res)=>{
             this.getPostApi();
         })
@@ -67,7 +81,9 @@ class BlogPost extends Component{
 
     
     putDataToApi=()=>{
-        axios.put(`http://localhost:3001/posts/${this.state.formBlogPost.id}`,this.state.formBlogPost)
+        let data=this.state.formBlogPost;
+        data.id=this.state.formBlogPost.id;
+        API.PutDataPost(data)
         .then((res)=>{
             console.log(res)
             this.getPostApi();
@@ -90,7 +106,7 @@ class BlogPost extends Component{
        
     }
     handleUpdate =(e)=>{
-        console.log(e)
+       
         this.setState({
             formBlogPost:e,
             isUpdate:true
@@ -135,7 +151,11 @@ class BlogPost extends Component{
                       this.state.isUpdate?<button className='btn-submit' onClick={this.handeCencel}>Batal</button> :null
                   }
                 </div>
-              
+                {/* {
+                    this.state.comment.map(comment=>{
+                    return <p>{comment.name }-{comment.email}</p>
+                    })
+                } */}
                 {
                     this.state.post.map(post=>{
                         return   <Post 
